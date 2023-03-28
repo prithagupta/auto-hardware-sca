@@ -33,12 +33,11 @@ def perform_attack(dataset_reader_obj):
                                num_attacks=num_attacks, plaintext_ciphertext=plaintext_ciphertext_attack,
                                real_key=real_key, byte=byte, seed=seed, shuffle=True)
     attack_params = dict(X_attack=X_attack, Y_attack=Y_attack)
-    if "ASCAD" in dataset_name:
-        attack_obj = ASCADAttack(**attack_class_params)
+    attack_obj = ASCADAttack(**attack_class_params)
     attack_obj.attack(**attack_params)
     logger.info(f'The model is already trained')
     logger.info('Best model summary:')
-    attack_model.summary(print_fn=logger.info)
+    logger.info(f"The attack is possible {attack_obj.guessing_entropy_final < 1}")
 
 
 if __name__ == "__main__":
@@ -61,7 +60,7 @@ if __name__ == "__main__":
     args_model_name = arguments.model_name
     tuner_type = arguments.tuner_type
     max_trials = arguments.max_trials
-    epochs = 200
+    epochs = 100
     batch_size = 200
 
     # Load dataset
