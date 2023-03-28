@@ -1,9 +1,9 @@
 from os.path import realpath, dirname, join
 from setuptools import setup, find_packages
 
-DISTNAME = 'deepscapy'
+DISTNAME = 'autohsca'
 DESCRIPTION = 'Side Channel Attacks using Deep Neural Networks'
-MAINTAINER = 'Varun Nandkumar Golani'
+MAINTAINER = 'Pritha Gupta'
 MAINTAINER_EMAIL = 'prithag@mail.upb.de'
 VERSION = "1.0"
 
