@@ -100,17 +100,21 @@ if __name__ == "__main__":
         logger.info(f"Log File {log_path}")
 
         verbose = 1
-        if tuner_type in [RANDOM_TUNER, BAYESIAN_TUNER]:
-            n_e = 20
-            model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, epochs=n_e, final_model_epochs=epochs - n_e,
-                      verbose=verbose)
-        elif tuner_type == GREEDY_TUNER:
-            n_e = 50
-            model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, epochs=n_e, final_model_epochs=epochs - n_e,
-                      verbose=verbose)
+        if model_class == NASBasic5:
+            if tuner_type in [RANDOM_TUNER, BAYESIAN_TUNER]:
+                n_e = 20
+                model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, epochs=n_e, final_model_epochs=epochs - n_e,
+                          verbose=verbose)
+            elif tuner_type == GREEDY_TUNER:
+                n_e = 50
+                model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, epochs=n_e, final_model_epochs=epochs - n_e,
+                          verbose=verbose)
+            elif tuner_type == HYPERBAND_TUNER:
+                model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, final_model_epochs=epochs, epochs=epochs,
+                          verbose=verbose)
         else:
-            model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, final_model_epochs=epochs, epochs=epochs,
-                      verbose=verbose)
+            model.fit(X=X_profiling, y=Y_profiling, batch_size=batch_size, epochs=epochs, verbose=verbose)
+
 
         logger.info('Best model summary:')
         model.summary(print_fn=logger.info)

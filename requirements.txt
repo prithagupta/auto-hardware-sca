@@ -5,8 +5,8 @@ pandas>=1.1.5
 matplotlib>=3.3.3
 future>=0.18.2
 openpyxl>=3.0.0
-tensorflow>=2.9.0
-tensorflow_addons>=0.17.0
-keras_tuner>=1.1.2
-keras>=2.9.0
-autokeras>=1.0.19
+tensorflow==2.9.0
+tensorflow_addons==0.17.0
+keras_tuner==1.1.2
+keras==2.9.0
+autokeras==1.0.19
