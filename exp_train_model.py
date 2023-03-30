@@ -117,8 +117,9 @@ if __name__ == "__main__":
 
         logger.info('Best model summary:')
         model.summary(print_fn=logger.info)
-        logger.info('Search Space summary:')
-        model.search_space_summary()
+        if model_class == NASBasic5:
+            logger.info('Search Space summary:')
+            model.search_space_summary()
         perform_attack(dataset_reader_obj)
     else:
         perform_attack(dataset_reader_obj)
